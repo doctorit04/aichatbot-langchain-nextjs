@@ -1,32 +1,52 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server"
 
-// กำหนดให้ API นี้ทำงานแบบ get method ที่มี query parameter
-// ตัวอย่างการเรียกใช้งาน: /api/test?name=YourName
+// GET Method Example
+// URL: /api/test?name=John
+// URL: /api/test หรือ http://localhost:3000/api/test?name=John
 export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url);
-  const name = searchParams.get("name") || "World";
-  const tel = searchParams.get("tel") || "000-000-0000";
+    const { searchParams } = new URL(request.url)
+    const name = searchParams.get("name") || "World"
 
-  return NextResponse.json({ message: `Hello, ${name}! and tel ${tel}` });
+    return NextResponse.json({
+        message: `Hello, ${name}`
+    })
 }
 
-// กำหนดให้ API นี้ทำงานแบบ post method ที่มี body เป็น JSON
-// ตัวอย่างการเรียกใช้งาน: POST /api/test กับ body { "name": "YourName", "tel": "123-456-7890" }
+// POST Method Example
+// URL: /api/test
+// Body: { "name": "John" }
+// Content-Type: application/json
+// Headers: { "Content-Type": "application/json" }
+// curl -X POST http://localhost:3000/api/test -d '{"name":"Jane"}'
 export async function POST(request: NextRequest) {
-  const { name, tel } = await request.json();
-  return NextResponse.json({ message: `Hello, ${name}! and tel ${tel}` });
+  const data = await request.json()
+  const name = data.name || "World"
+  
+  return NextResponse.json({
+    message: `Hello, ${name}!`
+  })
 }
 
-// กำหนดให้ API นี้ทำงานแบบ put method ที่มี body เป็น JSON
-// ตัวอย่างการเรียกใช้งาน: PUT /api/test กับ body { "name": "YourName", "tel": "123-456-7890" }
+// PUT Method Example
+// URL: /api/test
+// Body: { "name": "Jane" }
+// Content-Type: application/json
+// Headers: { "Content-Type": "application/json" }
+// curl -X PUT http://localhost:3000/api/test -d '{"name":"Jane"}'
 export async function PUT(request: NextRequest) {
-  const { name, tel } = await request.json();
-  return NextResponse.json({ message: `Updated: ${name}! and tel ${tel}` });
+  const data = await request.json()
+  const name = data.name || "World"
+  
+  return NextResponse.json({
+    message: `Hello, ${name}!`
+  })
 }
 
-// กำหนดให้ API นี้ทำงานแบบ delete method ที่มี body เป็น JSON
-// ตัวอย่างการเรียกใช้งาน: DELETE /api/test กับ body { "name": "YourName" }
-export async function DELETE(request: NextRequest) {
-  const { name } = await request.json();
-  return NextResponse.json({ message: `Deleted: ${name}!` });
+// DELETE Method Example
+// URL: /api/test
+// curl -X DELETE http://localhost:3000/api/test
+export async function DELETE() {
+  return NextResponse.json({
+    message: "Delete request received"
+  })
 }

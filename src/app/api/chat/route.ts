@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
     const model = new ChatOpenAI({
       model: "gpt-4o-mini", // ระบุรุ่น AI model ที่ใช้
       temperature: 0.7, // ความสร้างสรรค์ของคำตอบ (0 = เป็นระบบมาก, 1 = สร้างสรรค์มาก)
-      maxTokens: 300, // จำนวน token สูงสุดที่สามารถตอบได้
+      maxTokens: 2000, // จำนวน token สูงสุดที่สามารถตอบได้
       streaming: true, // เปิดใช้ streaming response
     })
 

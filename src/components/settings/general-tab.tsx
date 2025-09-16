@@ -13,7 +13,6 @@ export function GeneralTab() {
   const [showAdditionalModels, setShowAdditionalModels] = useState(true)
   const [showFollowUpSuggestions, setShowFollowUpSuggestions] = useState(true)
 
-
   const themeOptions = [
     { value: "light", label: "Light" },
     { value: "dark", label: "Dark" },

@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Anuphan, Inter } from "next/font/google"
 import "./globals.css"
+import "katex/dist/katex.min.css"
 import { ThemeProvider } from "@/lib/theme-provider"
 
 const anuphan = Anuphan({
@@ -26,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${anuphan.variable} ${inter.variable}`}>
-         <ThemeProvider
+       <ThemeProvider
           defaultTheme="system"
           storageKey="ai-chatbot-theme"
         >

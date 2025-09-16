@@ -47,7 +47,6 @@ import {
   SecurityTab,
   AccountTab
 } from "@/components/settings"
-
 import { ThemeToggle } from "@/components/ui/theme-toggle"
 
 // Initial conversation history
@@ -338,7 +337,7 @@ export function ChatSidebar({ display_name, email }: ChatSidebarProps) {
 
           {/* Place button Theme toggle here */}
           <ThemeToggle />
-          
+
           <Button
             variant="ghost"
             className="size-8"
